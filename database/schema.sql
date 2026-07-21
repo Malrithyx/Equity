@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS licenses (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), key_hash text UNIQUE NOT NULL, key_hint text NOT NULL, label text NOT NULL DEFAULT '', duration_seconds bigint NOT NULL, device_locked boolean NOT NULL DEFAULT true, device_hash text, created_at timestamptz NOT NULL DEFAULT now(), activated_at timestamptz, expires_at timestamptz, revoked_at timestamptz, last_seen_at timestamptz, validations bigint NOT NULL DEFAULT 0);
+-- statement-breakpoint
+CREATE TABLE IF NOT EXISTS login_attempts (identity_hash text PRIMARY KEY, window_started_at timestamptz NOT NULL DEFAULT now(), attempts integer NOT NULL DEFAULT 0);

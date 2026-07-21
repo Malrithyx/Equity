@@ -1,0 +1,1 @@
+import {redirect} from "next/navigation"; import {session} from "@/lib/auth"; import {all} from "@/lib/licenses"; import Dashboard from "@/components/Dashboard"; export const dynamic="force-dynamic"; export default async function Page(){const s=await session();if(!s)redirect("/login");return <Dashboard username={s.username} initial={await all()}/>}
